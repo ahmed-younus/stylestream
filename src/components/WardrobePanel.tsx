@@ -126,6 +126,8 @@ const WardrobePanel = ({
                         <img
                           src={product.imageBase64 || product.image}
                           alt={product.name}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                         {!isSelected && (

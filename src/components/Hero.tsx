@@ -333,6 +333,8 @@ const Hero = () => {
                     <img
                       src={currentOutfit.image}
                       alt={`${currentModel.modelName} - ${currentOutfit.label}`}
+                      loading="eager"
+                      decoding="async"
                       className="w-full h-full object-cover object-top"
                     />
                     

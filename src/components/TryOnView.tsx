@@ -504,6 +504,8 @@ const TryOnView = ({ avatarImage, faceImage, selectedProducts, onAddToCart, onLi
                           <img
                             src={hasCustomImage || product.image}
                             alt={product.name}
+                            loading="lazy"
+                            decoding="async"
                             className={`w-10 h-10 md:w-12 md:h-12 rounded-lg object-cover border-2 ${
                               isFailed ? 'border-destructive' : 'border-primary/40'
                             }`}

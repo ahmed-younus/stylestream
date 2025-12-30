@@ -79,15 +79,16 @@ const WelcomeWalkthrough = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md p-0 overflow-hidden border-border bg-background">
+      <DialogContent className="sm:max-w-md p-0 overflow-hidden border-border bg-background [&>button:last-child]:hidden">
+        {/* Custom close button with better positioning */}
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 z-10 p-1 rounded-full hover:bg-secondary transition-colors"
+          className="absolute right-3 top-3 z-50 p-2 rounded-full hover:bg-secondary transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
         >
-          <X className="w-4 h-4 text-muted-foreground" />
+          <X className="w-5 h-5 text-muted-foreground" />
         </button>
 
-        <div className="p-6">
+        <div className="p-6 pt-12">
           {/* Step indicator */}
           <div className="flex justify-center gap-1.5 mb-6">
             {steps.map((_, index) => (
@@ -144,10 +145,10 @@ const WelcomeWalkthrough = () => {
               size="sm"
               onClick={handlePrev}
               disabled={currentStep === 0}
-              className="text-muted-foreground"
+              className="text-muted-foreground min-h-[44px] touch-manipulation"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
-              Back
+              BACK
             </Button>
 
             <span className="text-xs text-muted-foreground">
@@ -157,9 +158,9 @@ const WelcomeWalkthrough = () => {
             <Button
               size="sm"
               onClick={handleNext}
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 min-h-[44px] px-5 touch-manipulation"
             >
-              {currentStep === steps.length - 1 ? "Get Started" : "Next"}
+              {currentStep === steps.length - 1 ? "GET STARTED" : "NEXT"}
               {currentStep < steps.length - 1 && <ChevronRight className="w-4 h-4 ml-1" />}
             </Button>
           </div>
@@ -168,7 +169,7 @@ const WelcomeWalkthrough = () => {
           {currentStep < steps.length - 1 && (
             <button
               onClick={handleClose}
-              className="w-full mt-4 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="w-full mt-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors touch-manipulation min-h-[44px]"
             >
               Skip walkthrough
             </button>

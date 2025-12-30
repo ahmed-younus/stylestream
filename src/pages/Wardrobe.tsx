@@ -368,7 +368,7 @@ const Wardrobe = () => {
                             className="group relative bg-card border border-border rounded-lg overflow-hidden"
                           >
                             <div className="relative">
-                              <img src={item.product_image} alt={item.product_name} className="w-full aspect-square object-cover" />
+                              <img src={item.product_image} alt={item.product_name} loading="lazy" decoding="async" className="w-full aspect-square object-cover" />
                               
                               {/* Desktop hover overlay */}
                               <div className="hidden md:flex absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity items-end p-3">
@@ -435,7 +435,7 @@ const Wardrobe = () => {
                 <div className="space-y-3">
                   {filteredItems.map((item) => (
                     <div key={item.id} className="flex items-center gap-4 bg-card border border-border rounded-lg p-3">
-                      <img src={item.product_image} alt={item.product_name} className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
+                      <img src={item.product_image} alt={item.product_name} loading="lazy" decoding="async" className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm line-clamp-1">{item.product_name}</p>
                         <p className="text-xs text-muted-foreground">{item.product_brand}</p>

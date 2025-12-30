@@ -209,6 +209,8 @@ const SwipeableResultsCarousel = ({
                     src={result.image}
                     alt={result.title}
                     className="w-full aspect-square object-cover"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}
