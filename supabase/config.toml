@@ -1,0 +1,16 @@
+project_id = "xqqtxjirmzdfelgpaaal"
+
+[functions.try-on]
+verify_jwt = true
+
+[functions.crawl-products]
+verify_jwt = true
+
+[functions.ai-shopping-assistant]
+verify_jwt = true
+
+[functions.clean-product-image]
+verify_jwt = true
+
+[functions.extract-face]
+verify_jwt = true

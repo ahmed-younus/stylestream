@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN favorite_brands text[] DEFAULT '{}'::text[];
