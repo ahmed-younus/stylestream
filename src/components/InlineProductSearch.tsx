@@ -824,7 +824,7 @@ const InlineProductSearch = ({ onTryOnProduct, onUpdateAvatar, currentOutfit = [
                   <X className="w-3.5 h-3.5" />
                 </button>
               </div>
-              <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
                 {savedProductImages.map((img) => (
                   <motion.div
                     key={img.id}
@@ -836,11 +836,11 @@ const InlineProductSearch = ({ onTryOnProduct, onUpdateAvatar, currentOutfit = [
                     <img
                       src={img.image_url}
                       alt={img.name || "Saved product"}
-                      className="w-full aspect-square object-cover rounded-lg border border-border group-hover:border-primary/50 transition-colors"
+                      className="w-full aspect-square object-cover rounded-lg border border-border group-hover:border-primary/50 active:border-primary transition-colors"
                     />
                     <button
                       onClick={(e) => handleDeleteSavedImage(img.id, e)}
-                      className="absolute top-1 right-1 p-1 bg-background/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-destructive/20"
+                      className="absolute top-1 right-1 p-1.5 bg-background/80 rounded-full opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity hover:bg-destructive/20 touch-manipulation"
                     >
                       <Trash2 className="w-3 h-3 text-destructive" />
                     </button>

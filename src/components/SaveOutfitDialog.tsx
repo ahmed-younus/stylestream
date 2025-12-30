@@ -38,7 +38,7 @@ const SaveOutfitDialog = ({ open, onOpenChange, onSave, isSaving }: SaveOutfitDi
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="bg-card border-border max-w-md" onOpenAutoFocus={(e) => e.preventDefault()}>
+      <DialogContent className="bg-card border-border max-w-md mx-4 sm:mx-auto" onOpenAutoFocus={(e) => e.preventDefault()}>
         <DialogHeader>
           <DialogTitle className="font-display text-lg tracking-wider flex items-center gap-2">
             <Heart className="w-5 h-5" />
@@ -109,7 +109,7 @@ const SaveOutfitDialog = ({ open, onOpenChange, onSave, isSaving }: SaveOutfitDi
             onClick={handleSave}
             disabled={isSaving}
             variant="primary"
-            className="w-full"
+            className="w-full min-h-[48px] touch-manipulation active:scale-[0.98]"
           >
             {isSaving ? (
               <>Saving...</>

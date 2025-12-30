@@ -223,10 +223,10 @@ const Feed = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <div className="max-w-2xl mx-auto px-4 pt-24 pb-6">
-        <div className="flex items-center justify-center gap-2 mb-6">
+      <div className="max-w-2xl mx-auto px-3 sm:px-4 pt-20 sm:pt-24 pb-6">
+        <div className="flex items-center justify-center gap-2 mb-4 sm:mb-6">
           <Users className="w-5 h-5 text-foreground" />
-          <h1 className="font-display text-xl tracking-[0.15em]">STYLE FEED</h1>
+          <h1 className="font-display text-lg sm:text-xl tracking-[0.15em]">STYLE FEED</h1>
         </div>
 
         <UserSearch currentUserId={user?.id || ""} />

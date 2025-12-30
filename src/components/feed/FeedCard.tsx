@@ -163,7 +163,7 @@ const FeedCard = ({ outfit, onLikeToggle, currentUserId }: FeedCardProps) => {
       </div>
 
       {/* Actions */}
-      <div className="p-4 space-y-4">
+      <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
         {/* Caption */}
         {outfit.caption && (
           <p className="font-body text-sm text-foreground/90 leading-relaxed">
@@ -172,35 +172,37 @@ const FeedCard = ({ outfit, onLikeToggle, currentUserId }: FeedCardProps) => {
           </p>
         )}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1">
           <button
             onClick={() => onLikeToggle(outfit.id, outfit.is_liked)}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-1.5 p-2 -ml-2 rounded-lg hover:bg-secondary/50 active:bg-secondary transition-colors touch-manipulation"
           >
             <motion.div
               whileTap={{ scale: 0.8 }}
               animate={outfit.is_liked ? { scale: [1, 1.2, 1] } : {}}
             >
-              <Heart 
+              <Heart
                 className={`w-6 h-6 transition-colors ${
-                  outfit.is_liked 
-                    ? "fill-red-500 text-red-500" 
-                    : "text-foreground group-hover:text-red-400"
-                }`} 
+                  outfit.is_liked
+                    ? "fill-red-500 text-red-500"
+                    : "text-foreground"
+                }`}
               />
             </motion.div>
             <span className="font-body text-sm">{outfit.likes_count}</span>
           </button>
 
-          <button 
+          <button
             onClick={() => setShowComments(!showComments)}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-1.5 p-2 rounded-lg hover:bg-secondary/50 active:bg-secondary transition-colors touch-manipulation"
           >
-            <MessageCircle className="w-6 h-6 text-foreground group-hover:text-primary/80 transition-colors" />
+            <MessageCircle className="w-6 h-6 text-foreground" />
             <span className="font-body text-sm">{localCommentsCount}</span>
           </button>
 
-          <ShareMenu outfitId={outfit.id} />
+          <div className="ml-auto">
+            <ShareMenu outfitId={outfit.id} />
+          </div>
         </div>
 
         {/* Rating */}
@@ -215,29 +217,29 @@ const FeedCard = ({ outfit, onLikeToggle, currentUserId }: FeedCardProps) => {
         </div>
 
         {/* Products with retailer tags */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none -mx-1 px-1" style={{ WebkitOverflowScrolling: 'touch' }}>
           {outfit.products.slice(0, 4).map((product) => (
             <div key={product.id} className="relative flex-shrink-0">
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-12 h-12 object-cover border border-border"
+                className="w-11 h-11 sm:w-12 sm:h-12 object-cover border border-border rounded-sm"
               />
               {product.retailer && (
-                <span className="absolute -bottom-1 left-0 right-0 bg-foreground text-background text-[8px] text-center py-0.5 font-medium uppercase truncate">
+                <span className="absolute -bottom-1 left-0 right-0 bg-foreground text-background text-[7px] sm:text-[8px] text-center py-0.5 font-medium uppercase truncate rounded-b-sm">
                   {product.retailer}
                 </span>
               )}
             </div>
           ))}
           {outfit.products.length > 4 && (
-            <div className="w-12 h-12 bg-secondary flex items-center justify-center flex-shrink-0">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-secondary flex items-center justify-center flex-shrink-0 rounded-sm">
               <span className="text-xs font-body text-muted-foreground">
                 +{outfit.products.length - 4}
               </span>
             </div>
           )}
-          <div className="ml-auto pl-4">
+          <div className="ml-auto pl-2 sm:pl-4 flex-shrink-0">
             <p className="font-display text-sm font-semibold">
               £{Number(outfit.total_price).toFixed(0)}
             </p>
@@ -250,13 +252,14 @@ const FeedCard = ({ outfit, onLikeToggle, currentUserId }: FeedCardProps) => {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             placeholder="Add a comment..."
-            className="flex-1 bg-secondary border-border text-sm"
+            className="flex-1 bg-secondary border-border text-sm h-10"
           />
-          <Button 
-            type="submit" 
-            size="icon" 
+          <Button
+            type="submit"
+            size="icon"
             variant="ghost"
             disabled={!newComment.trim() || submitting}
+            className="h-10 w-10 min-w-[40px] touch-manipulation"
           >
             <Send className="w-4 h-4" />
           </Button>

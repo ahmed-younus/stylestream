@@ -202,16 +202,46 @@ const ProfilePage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       
-      <div className="max-w-2xl mx-auto px-4 pt-24 pb-8">
-        <div className="flex items-start gap-6 mb-8">
-          <Avatar className="w-20 h-20 border-2 border-border">
-            <AvatarImage src={profile.avatar_url || undefined} />
-            <AvatarFallback className="bg-secondary text-foreground font-display text-xl">
-              {initials}
-            </AvatarFallback>
-          </Avatar>
+      <div className="max-w-2xl mx-auto px-4 pt-20 sm:pt-24 pb-8">
+        {/* Mobile Layout: Stacked, Desktop: Side by side */}
+        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="flex items-center gap-4 sm:block">
+            <Avatar className="w-16 h-16 sm:w-20 sm:h-20 border-2 border-border flex-shrink-0">
+              <AvatarImage src={profile.avatar_url || undefined} />
+              <AvatarFallback className="bg-secondary text-foreground font-display text-lg sm:text-xl">
+                {initials}
+              </AvatarFallback>
+            </Avatar>
 
-          <div className="flex-1">
+            {/* Mobile: Name + Button next to avatar */}
+            <div className="sm:hidden flex-1">
+              <h2 className="font-display text-base tracking-wider mb-2">{displayName}</h2>
+              {isOwnProfile && (
+                <Button onClick={() => navigate("/edit-profile")} variant="outline" size="sm" className="h-9 touch-manipulation">
+                  <Settings className="w-4 h-4 mr-1" />
+                  Edit Profile
+                </Button>
+              )}
+              {!isOwnProfile && user && (
+                <Button onClick={handleFollowToggle} variant={isFollowing ? "outline" : "default"} size="sm" className="h-9 touch-manipulation">
+                  {isFollowing ? (
+                    <>
+                      <UserMinus className="w-4 h-4 mr-1" />
+                      Unfollow
+                    </>
+                  ) : (
+                    <>
+                      <UserPlus className="w-4 h-4 mr-1" />
+                      Follow
+                    </>
+                  )}
+                </Button>
+              )}
+            </div>
+          </div>
+
+          {/* Desktop: Name + Button */}
+          <div className="hidden sm:block flex-1">
             <div className="flex items-center gap-4 mb-4">
               <h2 className="font-display text-lg tracking-wider">{displayName}</h2>
               {isOwnProfile && (
@@ -254,18 +284,34 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="border-t border-border pt-6">
-          <div className="flex items-center gap-2 mb-4">
+        {/* Mobile Stats Bar */}
+        <div className="sm:hidden flex justify-around py-3 border-y border-border mb-4">
+          <div className="text-center">
+            <p className="font-display text-base">{stats.outfitsCount}</p>
+            <p className="text-[10px] text-muted-foreground font-body uppercase tracking-wider">Outfits</p>
+          </div>
+          <div className="text-center">
+            <p className="font-display text-base">{stats.followersCount}</p>
+            <p className="text-[10px] text-muted-foreground font-body uppercase tracking-wider">Followers</p>
+          </div>
+          <div className="text-center">
+            <p className="font-display text-base">{stats.followingCount}</p>
+            <p className="text-[10px] text-muted-foreground font-body uppercase tracking-wider">Following</p>
+          </div>
+        </div>
+
+        <div className="border-t border-border pt-4 sm:pt-6">
+          <div className="flex items-center gap-2 mb-3 sm:mb-4">
             <Grid className="w-4 h-4" />
             <span className="font-display text-xs tracking-wider">OUTFITS</span>
           </div>
 
           {outfits.length === 0 ? (
-            <p className="text-center text-muted-foreground py-12 font-body">
+            <p className="text-center text-muted-foreground py-8 sm:py-12 font-body text-sm">
               {isOwnProfile ? "You haven't saved any outfits yet" : "No public outfits"}
             </p>
           ) : (
-            <div className="grid grid-cols-3 gap-1">
+            <div className="grid grid-cols-3 gap-0.5 sm:gap-1">
               {outfits.map((outfit) => (
                 <motion.div
                   key={outfit.id}

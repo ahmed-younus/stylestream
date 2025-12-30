@@ -297,7 +297,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative order-1 lg:order-2"
           >
-            <div className="relative aspect-[3/4] max-w-xs mx-auto">
+            <div className="relative aspect-[3/4] max-w-[260px] sm:max-w-xs mx-auto">
               {/* Glowing border effect */}
               <div className="absolute -inset-1 bg-gradient-to-b from-primary/20 via-primary/5 to-transparent rounded-sm blur-sm" />
               
