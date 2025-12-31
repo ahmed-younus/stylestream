@@ -40,7 +40,7 @@ const DailyRewardBanner = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
-        className="fixed top-20 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-md"
+        className="fixed top-20 right-4 left-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 sm:w-[95%] sm:max-w-md"
       >
         <div className="relative bg-gradient-to-r from-primary/90 to-primary rounded-xl p-4 shadow-lg shadow-primary/20 border border-primary-foreground/10">
           {/* Dismiss button */}
